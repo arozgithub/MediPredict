@@ -3,10 +3,10 @@ import "../App.css";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import Modal from "react-modal";
 
-import team01 from "../assets/AboutImg/team-01.jpg";
-import team02 from "../assets/AboutImg/team-02.jpg";
-import team03 from "../assets/AboutImg/team-03.jpg";
-import team04 from "../assets/AboutImg/team-04.jpg";
+// import team01 from "../assets/AboutImg/team-01.jpg";
+// import team02 from "../assets/AboutImg/team-02.jpg";
+// import team03 from "../assets/AboutImg/team-03.jpg";
+// import team04 from "../assets/AboutImg/team-04.jpg";
 import formal from "../assets/AboutImg/formal.jpg";
 import hussain from "../assets/AboutImg/hussain.jpg";
 
