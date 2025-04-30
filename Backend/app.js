@@ -4,7 +4,6 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
 import predRouter from "./routes/prediction.routes.js";
 import pdfRouter from "./routes/pdf.routes.js"; // Import pdfRoutes
-import chatbotRouter from "./routes/chatbot.routes.js"; // Import chatbotRoutes
 
 const app = express();
 
@@ -28,8 +27,6 @@ app.use(
   })
 );
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-
 // Configurations for different types of data acceptance
 // Limiting json data acceptance
 app.use(express.json());
@@ -41,6 +38,5 @@ app.use(cookieParser());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/predict", predRouter);
 app.use("/api/pdf", pdfRouter); // Add this line to include the new PDF routes
-app.use("/", chatbotRouter); // Add chatbot routes directly to root path
 
 export { app };
