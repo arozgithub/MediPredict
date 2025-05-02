@@ -15,17 +15,31 @@ import { app } from "./app.js";
 // ─── CORS FIX: Allow both Localhost and Vercel ────────────────────────────────
 const allowedOrigins = [
   "http://localhost:5173", // Local environment
+  "http://localhost:3000",
+  "http://localhost:5174", // Additional local development port
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:3000",
+  "http://127.0.0.1:5174", // Additional local development port
+  "http://192.168.0.103:5173", // Local IP address
+  "http://192.168.0.103:5174", // Local IP address with different port
+  "http://192.168.0.103:8080", // Local IP address with different port
   "https://predicti-x-v2.vercel.app", // Deployed Vercel environment
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true); // allow the origin
-      } else {
-        callback(new Error("Not allowed by CORS")); // Reject the request
+      // Allow requests with no origin (like mobile apps, curl requests)
+      if (!origin) {
+        return callback(null, true);
       }
+      
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true); // allow the origin
+      } 
+      
+      console.log("Blocked origin:", origin);
+      callback(new Error("Not allowed by CORS")); // Reject the request
     },
     credentials: true, // Enable cookies and credentials if needed
   })

@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
 import predRouter from "./routes/prediction.routes.js";
 import pdfRouter from "./routes/pdf.routes.js"; // Import pdfRoutes
+import chatbotRouter from "./routes/chatbot.routes.js"; // Import chatbot routes
 
 const app = express();
 
@@ -38,5 +39,6 @@ app.use(cookieParser());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/predict", predRouter);
 app.use("/api/pdf", pdfRouter); // Add this line to include the new PDF routes
+app.use("/api/v1/chatbot", chatbotRouter); // Register chatbot routes
 
 export { app };
